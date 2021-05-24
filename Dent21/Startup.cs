@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Repositories.Repository;
 using Repository.Repository;
+using Services.Partners;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,7 @@ namespace Dent21
 
             services.AddTransient(typeof(IRepository<>), typeof(MainRepository<>));
             services.AddTransient(typeof(IRepository<>), typeof(PartnerRepository<>));
+            services.AddScoped<IPartnerService, PartnerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
