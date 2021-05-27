@@ -1,7 +1,7 @@
 ﻿using Entities.ViewModels.Main;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Services.Partners;
+using Services.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +22,15 @@ namespace Dent.Api.Controllers.AddPartner
         [HttpPost]
         public async Task<IActionResult> AddPartner(PartnerModel partner)
         {
-            await _partnerService.AddPartner(partner);
-            return Ok();
+            try
+            {
+                var result = await _partnerService.AddPartner(partner);
+                return Ok(new { result = $"პარტნიორი '{result.Name}' დაემატა მონაცემთა ბაზას!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message, error = ex.InnerException });
+            }
         }
     }
 }

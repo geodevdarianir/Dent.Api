@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Partners
+namespace Services.Main
 {
     public interface IPartnerService
     {
-        Task<Partner> AddPartner(PartnerModel partnerModel);
+        Task<PartnerModel> AddPartner(PartnerModel partnerModel);
     }
 }

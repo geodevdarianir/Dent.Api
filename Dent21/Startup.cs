@@ -1,4 +1,7 @@
+using Dent.Api.Extensions;
 using Entities.Context;
+using Entities.Mapping;
+using Entities.Models.Main;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,7 +14,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Repositories.Repository;
 using Repository.Repository;
-using Services.Partners;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,10 +40,11 @@ namespace Dent21
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dent21", Version = "v1" });
             });
-
-            services.AddTransient(typeof(IRepository<>), typeof(MainRepository<>));
-            services.AddTransient(typeof(IRepository<>), typeof(PartnerRepository<>));
-            services.AddScoped<IPartnerService, PartnerService>();
+            services.AddMainRepositories();
+            services.AddPartnerRepositories();
+            services.AddMainServices();
+            services.AddPartnerServices();
+            services.AddMappingProfiles();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

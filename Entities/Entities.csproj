@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="DTO\" />
-    <Folder Include="Mapping\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Helper\Helper.csproj" />
   </ItemGroup>
 
 </Project>
