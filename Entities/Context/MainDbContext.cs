@@ -16,7 +16,6 @@ namespace Entities.Context
 
         }
 
-
         public virtual DbSet<Partner> Partners { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<User> Users { get; set; }

@@ -26,8 +26,6 @@ namespace Entities.Context
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Work> Works { get; set; }
 
-
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

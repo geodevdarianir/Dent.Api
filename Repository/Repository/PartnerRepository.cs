@@ -37,6 +37,25 @@ namespace Repository.Repository
             }
         }
 
+        public async Task<IEnumerable<TEntity>> CreateRangeAsync(IEnumerable<TEntity> entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException($"{nameof(TEntity)} entity must not be null");
+            }
+
+            try
+            {
+                await _context.Set<TEntity>().AddRangeAsync(entity);
+                await _context.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{nameof(entity)} could not be saved: {ex.Message}");
+            }
+        }
+
         public async Task DeleteAsync(int id)
         {
             var entity = await GetByIdAsync(id);
@@ -48,7 +67,7 @@ namespace Repository.Repository
         {
             try
             {
-                return  _context.Set<TEntity>().AsNoTracking();
+                return _context.Set<TEntity>().AsNoTracking();
             }
             catch (Exception ex)
             {
@@ -58,7 +77,7 @@ namespace Repository.Repository
 
         public async Task<TEntity> GetByIdAsync(int id)
         {
-            
+
             return await _context.Set<TEntity>()
                   .AsNoTracking()
                   .FirstOrDefaultAsync(e => e.Id == id);

@@ -5,12 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Partner\**" />
-    <EmbeddedResource Remove="Partner\**" />
-    <None Remove="Partner\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Repository\Repositories.csproj" />
   </ItemGroup>
 

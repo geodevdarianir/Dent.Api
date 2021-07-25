@@ -3,6 +3,7 @@ using Entities.Models.Main;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories.Repository;
 using Repository.Repository;
+using Services.Dent;
 using Services.Main;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace Dent.Api.Extensions
 
         public static IServiceCollection AddPartnerServices(this IServiceCollection services)
         {
+            services.AddScoped<IArtService, ArtService>();
             return services;
         }
 
@@ -40,10 +42,11 @@ namespace Dent.Api.Extensions
         {
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new PartnerDataMappingProfile());
+                cfg.AddProfile(new DentMappingProfile());
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+            //services.AddAutoMapper(typeof(DentMappingProfile));
             return services;
         }
     }
