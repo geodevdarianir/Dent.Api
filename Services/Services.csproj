@@ -1,15 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Repository\Repositories.csproj" />
+    <Compile Remove="Partner\**" />
+    <EmbeddedResource Remove="Partner\**" />
+    <None Remove="Partner\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Partner\" />
+    <ProjectReference Include="..\Repository\Repositories.csproj" />
   </ItemGroup>
 
 </Project>
