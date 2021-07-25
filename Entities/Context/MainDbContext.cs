@@ -22,5 +22,7 @@ namespace Entities.Context
         {
             base.OnModelCreating(builder);
         }
+
+
     }
 }
